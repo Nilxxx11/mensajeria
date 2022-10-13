@@ -158,7 +158,7 @@ def perfil():
 def configuracion():
     return render_template('configuracion.html', name=current_user.username, email=current_user.email,fecha=current_user.fecha)
 
-te('/restablecer')
+"""te('/restablecer')
 @login_required
 def restablecer():
     @copy_current_request_context
@@ -167,7 +167,7 @@ def restablecer():
             enviar=threading.Thread(name='enviar',target=send_menssage,args=(email_destino,))
             enviar.start()
     return redirect(url_for('dasboard'))
-
+"""
 
 
 @app.route('/logout')
