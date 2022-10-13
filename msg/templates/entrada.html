@@ -1,0 +1,44 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+   {%include "tools/barra_dashboard.html"%}
+          {%include "tools/buscador.html"%}
+
+    
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header" >BANDEJA DE ENTRADA</h1>
+
+    
+          {%for msg in msgs%}
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>DE</th>
+                  <th>ASUNTO</th>
+                  <th>MENSAJE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{msg.user_remitente}}</td>
+                  <td>{{msg.asunto}}</td>
+                  <td>{{msg.mensaje}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {% endfor %}
+
+
+          
+{% endblock %}

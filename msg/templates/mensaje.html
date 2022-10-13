@@ -1,0 +1,41 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+   {%include "tools/barra_dashboard.html"%}
+          {%include "tools/buscador.html"%}
+<div class="container">
+    
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h2 class="page-header" >ENVIA UN MENSAJE</h2>
+          <h3>Usuarios registrados:</h3>
+          {%for user in users%}
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  
+                  <th>USUARIO</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  
+                  <td>{{user.username}}</td>
+                  <td><a href="{{url_for('enviar',id=user.id)}}" class="btn btn-warning btn-xs">enviar mensaje</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {% endfor %}
+
+{% endblock %}
